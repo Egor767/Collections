@@ -1,0 +1,203 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication29
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                Queue<string> shop = new Queue<string>();
+                shop.Enqueue("Milk");
+                shop.Enqueue("Bread");
+                shop.Enqueue("Meal");
+                
+                Queue<string> people = new Queue<string>();
+                people.Enqueue("Egor");
+                people.Enqueue("Kirill");
+                people.Enqueue("Aleksandr");
+                people.Enqueue("Viktor");
+                Console.Clear();
+                Console.WriteLine("Методы Коллекции Queue<> С#");
+                Console.WriteLine("1. Задание Очереди");
+                Console.WriteLine("2. Длина Очереди");
+                Console.WriteLine("3. Очищение Очереди");
+                Console.WriteLine("4. Проверка на наличие элемента в Очереди");
+                Console.WriteLine("5. Добавление элемента в Очереди");
+                Console.WriteLine("6. Возврат и удаление элемента из Очереди");
+                Console.WriteLine("7. Выход");
+                int k = int.Parse(Console.ReadLine());
+                Console.Clear();
+                if (k == 1)
+                {
+                    Console.WriteLine("Задание Очереди");
+                    Console.WriteLine();
+                    Console.WriteLine("Задание Очереди неизвестной длины: Queue<string> numbers = new Queue<string>();()");
+                    Console.WriteLine("Задание Очереди известной длины: Queue<string> numbers = new Queue<string>(10)");
+                    Console.WriteLine();
+                    Console.Write("Задайте очередь типа string с именем class длиной 5: ");
+                    string s = Console.ReadLine();
+                    while (s != "Queue<string> class = new Queue<string>(5)")
+                    {
+                        Console.Write("Неправильно, попробуйте еще раз: ");
+                        s = Console.ReadLine();
+                    }
+                    Console.WriteLine("Правильно!");
+                    Console.ReadKey();
+                }
+                if (k == 2)
+                {
+                    Console.WriteLine("Возврат длины Очереди");
+                    Console.WriteLine();
+                    Console.WriteLine("Если у нас есть Очередь <people> = 'Egor', 'Kirill', 'Aleksandr' ");
+                    Console.WriteLine("Длину этой очереди можно узнать командой people.Count");
+                    Console.WriteLine();
+                    Console.Write("Узнайте длину очерди shop: ");
+                    string s1 = Console.ReadLine();
+                    while (s1 != "shop.Count")
+                    {
+                        Console.Write("Неправильно, попробуйте еще раз: ");
+                        s1 = Console.ReadLine();
+                    }
+                    Console.WriteLine("Длина Очереди shop = {0}", shop.Count);
+                    Console.WriteLine();
+                    Console.ReadKey();
+                }
+                if (k == 3)
+                {
+                    Console.WriteLine("Очищение Очереди");
+                    Console.WriteLine();
+                    Console.WriteLine("Пусть у нас есть Очередь <people> = 'Egor', 'Kirill', 'Aleksandr'");
+                    Console.WriteLine("people.Count --> {0}", people.Count);
+                    Console.WriteLine();
+                    Console.WriteLine("Командой people.Clear() можно удалить все элементы этой Очереди");
+                    Console.WriteLine("people.Clear()");
+                    Console.WriteLine("people  --> {}");
+                    Console.WriteLine("people.Count  --> {0}", people.Count);
+                    Console.WriteLine();
+                    shop.Clear();
+                    Console.Write("Очистите Очередь shop: ");
+                    string s2 = Console.ReadLine();
+                    while (s2 != "shop.Clear()")
+                    {
+                        Console.Write("Неправильно, попробуйте еще раз: ");
+                        s2 = Console.ReadLine();
+                    }
+                    Console.WriteLine("Длина Очереди shop = {0}", shop.Count);
+                    Console.WriteLine();
+                    Console.ReadKey();
+
+                }
+                if (k == 4)
+                {
+                    Console.WriteLine("Поверка вхождение элемента в Очередь");
+                    Console.WriteLine();
+                    Console.WriteLine("Пусть у нас есть Очередь <people> = 'Egor', 'Kirill', 'Aleksandr','Viktor'");
+                    Console.WriteLine("Команда people.Contains(string) проверяет входит ли строка string в Очередь people");
+                    Console.WriteLine();
+                    Console.WriteLine("Console.WriteLine(people.Contains('Egor'))  --> {0}  , т.e строка 'Egor' содержится в нашей Очереди", people.Contains("Egor"));
+                    Console.WriteLine("Console.WriteLine(people.Contains('Misha'))  --> {0}  , т.e строка 'Misha' не содержится в нашей Очереди", people.Contains("Misha"));
+                    Console.WriteLine("Можете попробовать свои слова, после чего введите строку END для окончания");
+                    Console.Write("Имя: ");
+                    string s3 = Console.ReadLine();
+                    Console.WriteLine(people.Contains(s3));
+                    while (s3 != "END")
+                    {
+                        Console.Write("Имя: ");
+                        s3 = Console.ReadLine();
+                        if (s3 == "END")
+                        {
+                            break;
+                        }
+                        Console.WriteLine(people.Contains(s3));
+                    }
+                    Console.WriteLine();
+                    Console.ReadKey();
+
+                }
+                if (k == 5)
+                {
+                    Queue<string> people2 = new Queue<string>();
+                    people2.Enqueue("Egor");
+                    people2.Enqueue("Kirill");
+                    people2.Enqueue("Aleksandr");
+                    people2.Enqueue("Viktor");
+                    Console.WriteLine("Добавление элемента в Очередь");
+                    Console.WriteLine();
+                    Console.WriteLine("Пусть у нас есть Очередь <people2> = 'Egor', 'Kirill', 'Aleksandr','Viktor'");
+                    Console.WriteLine("Команда people2.Enqueue(string) добавит в конец Очереди people2 строку string");
+                    Console.WriteLine();
+                    Console.WriteLine("people2.Push('Bob')");
+                    people2.Enqueue("Bob");
+                    Console.WriteLine("<people2> = 'Bob', 'Egor', 'Kirill', 'Aleksandr'");
+                    Console.WriteLine("Добавте несколько имен, после чего напишите END");
+                    string s4 = "";
+                    while (s4 != "END")
+                    {
+                        s4 = Console.ReadLine();
+                        if (s4 == "END")
+                        {
+                            break;
+                        }
+                        people2.Enqueue(s4);
+                        Console.WriteLine("people2.Enqueue({0})", s4);
+                        Console.WriteLine("Очередь:");
+                        foreach (string i in people2)
+                        {
+                            Console.WriteLine(i);
+                        }
+                        Console.WriteLine();
+                    }
+
+                    Console.WriteLine();
+                    Console.ReadKey();
+                }
+                if (k == 6)
+                {
+                    Queue<string> people6 = new Queue<string>();
+                    people6.Enqueue("Egor");
+                    people6.Enqueue("Kirill");
+                    people6.Enqueue("Aleksandr");
+                    people6.Enqueue("Viktor");
+                    Console.WriteLine("Возврат и удаление элемента из Очереди");
+                    Console.WriteLine();
+                    Console.WriteLine("Метод Stak.Dequeue() возвращает и удаляет первый элемент из Очереди");
+                    Console.WriteLine("А метод Stak.Peek() просто возвращает первый элемент из Очереди без его удаления");
+                    Console.WriteLine("Пусть у нас есть Очередь <people6> = 'Egor', 'Kirill', 'Aleksandr','Viktor'");
+                    Console.Write("Верните его первый элемент без удаления: ");
+                    string s6 = Console.ReadLine();
+                    while (s6 != "people6.Peek()")
+                    {
+                        Console.Write("Неправильно, попробуйте еще раз: ");
+                        s6 = Console.ReadLine();
+                    }
+                    Console.WriteLine("people6.Peek() -> {0}", people6.Peek());
+
+                    Console.WriteLine();
+                    Console.Write("Теперь верните первый элемент и удалите его: ");
+                    s6 = Console.ReadLine();
+                    while (s6 != "people6.Dequeue()")
+                    {
+                        Console.Write("Неправильно, попробуйте еще раз: ");
+                        s6 = Console.ReadLine();
+                    }
+                    Console.WriteLine("people6.Pop() -> {0}", people6.Dequeue());
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.ReadKey();
+                }
+                if (k == 7)
+                {
+                    Console.WriteLine("Конец...");
+                    break;
+                }
+
+            }
+        }
+    }
+}

@@ -1,0 +1,302 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication29
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                List<string> shop = new List<string>();
+                shop.Add("Milk");
+                shop.Add("Bread");
+                shop.Add("Meal");
+                
+                List<string> people = new List<string>();
+                people.Add("Egor");
+                people.Add("Kirill");
+                people.Add("Aleksandr");
+                people.Add("Viktor");
+                Console.Clear();
+                Console.WriteLine("Методы Коллекции List<> С#");
+                Console.WriteLine("1. Задание Списка");
+                Console.WriteLine("2. Длина Списка");
+                Console.WriteLine("3. Очищение Списка");
+                Console.WriteLine("4. Проверка на наличие элемента в Списке");
+                Console.WriteLine("5. Добавление элемента в Список");
+                Console.WriteLine("6. Обращение к элементам Списка");
+                Console.WriteLine("7. Переворот и сортировка Списка");
+                Console.WriteLine("8. Выход");
+                int k = int.Parse(Console.ReadLine());
+                Console.Clear();
+                if (k == 1)
+                {
+                    Console.WriteLine("Задание Списка");
+                    Console.WriteLine();
+                    Console.WriteLine("Задание Списка неизвестной длины: List<string> numbers = new List<string>();()");
+                    Console.WriteLine("Задание Списка известной длины: List<string> numbers = new List<string>(10)");
+                    Console.WriteLine("Задание Списка с переменными: List<string> numbers = new List<string>() {'Tom','Bob','Frank'}");
+                    Console.WriteLine();
+                    Console.Write("Задайте список типа string с именем class длиной 5: ");
+                    string s = Console.ReadLine();
+                    while (s != "List<string> class = new List<string>(5)")
+                    {
+                        Console.Write("Неправильно, попробуйте еще раз: ");
+                        s = Console.ReadLine();
+                    }
+                    Console.WriteLine("Правильно!");
+                    Console.WriteLine(); 
+                    Console.Write("Теперб задайте список типа string с именем class длиной с переменными one, two, three: ");
+                    string s0 = Console.ReadLine();
+                    while (s0 != "List<string> class = new List<string>() {'one', 'two', 'three'}" || s0 != "List<string> class = new List<string>(){'one', 'two', 'three'}")
+                    {
+                        Console.Write("Неправильно, попробуйте еще раз: ");
+                        s0 = Console.ReadLine();
+                    }
+                    Console.WriteLine("Правильно!");
+                    Console.ReadKey();
+                }
+                if (k == 2)
+                {
+                    Console.WriteLine("Возврат длины Списка");
+                    Console.WriteLine();
+                    Console.WriteLine("Если у нас есть Список <people> = 'Egor', 'Kirill', 'Aleksandr' ");
+                    Console.WriteLine("Длину этого списка можно узнать командой people.Count");
+                    Console.WriteLine();
+                    Console.Write("Узнайте длину списка shop: ");
+                    string s1 = Console.ReadLine();
+                    while (s1 != "shop.Count")
+                    {
+                        Console.Write("Неправильно, попробуйте еще раз: ");
+                        s1 = Console.ReadLine();
+                    }
+                    Console.WriteLine("Длина Списка shop = {0}", shop.Count);
+                    Console.WriteLine();
+                    Console.ReadKey();
+                }
+                if (k == 3)
+                {
+                    Console.WriteLine("Очищение Списка");
+                    Console.WriteLine();
+                    Console.WriteLine("Пусть у нас есть Список <people> = 'Egor', 'Kirill', 'Aleksandr'");
+                    Console.WriteLine("people.Count --> {0}", people.Count);
+                    Console.WriteLine();
+                    Console.WriteLine("Командой people.Clear() можно удалить все элементы этого Списка");
+                    Console.WriteLine("people.Clear()");
+                    Console.WriteLine("people  --> {}");
+                    Console.WriteLine("people.Count  --> {0}", people.Count);
+                    Console.WriteLine();
+                    shop.Clear();
+                    Console.Write("Очистите Очередь shop: ");
+                    string s2 = Console.ReadLine();
+                    while (s2 != "shop.Clear()")
+                    {
+                        Console.Write("Неправильно, попробуйте еще раз: ");
+                        s2 = Console.ReadLine();
+                    }
+                    Console.WriteLine("Длина Списка shop = {0}", shop.Count);
+                    Console.WriteLine();
+                    Console.ReadKey();
+
+                }
+                if (k == 4)
+                {
+                    Console.WriteLine("Поверка вхождение элемента в Список");
+                    Console.WriteLine();
+                    Console.WriteLine("Пусть у нас есть Список <people> = 'Egor', 'Kirill', 'Aleksandr','Viktor'");
+                    Console.WriteLine("Команда people.Contains(string) проверяет входит ли строка string в Список people");
+                    Console.WriteLine();
+                    Console.WriteLine("Console.WriteLine(people.Contains('Egor'))  --> {0}  , т.e строка 'Egor' содержится в нашем Списке", people.Contains("Egor"));
+                    Console.WriteLine("Console.WriteLine(people.Contains('Misha'))  --> {0}  , т.e строка 'Misha' не содержится в нашем Списке", people.Contains("Misha"));
+                    Console.WriteLine("Можете попробовать свои слова, после чего введите строку END для окончания");
+                    Console.Write("Имя: ");
+                    string s3 = Console.ReadLine();
+                    Console.WriteLine(people.Contains(s3));
+                    while (s3 != "END")
+                    {
+                        Console.Write("Имя: ");
+                        s3 = Console.ReadLine();
+                        if (s3 == "END")
+                        {
+                            break;
+                        }
+                        Console.WriteLine(people.Contains(s3));
+                    }
+                    Console.WriteLine();
+                    Console.ReadKey();
+
+                }
+                if (k == 5)
+                {
+                    List<string> people2 = new List<string>();
+                    people2.Add("Egor");
+                    people2.Add("Kirill");
+                    people2.Add("Aleksandr");
+                    people2.Add("Viktor");
+                    Console.WriteLine("Добавление элемента в Список");
+                    Console.WriteLine();
+                    Console.WriteLine("Пусть у нас есть Список <people2> = 'Egor', 'Kirill', 'Aleksandr','Viktor'");
+                    Console.WriteLine("Команда people2.Add(string) добавит в конец Списка people2 строку string");
+                    Console.WriteLine();
+                    Console.WriteLine("people2.Add('Bob')");
+                    people2.Add("Bob");
+                    Console.WriteLine("<people2> = 'Bob', 'Egor', 'Kirill', 'Aleksandr'");
+                    Console.WriteLine("Добавте несколько имен, после чего напишите END");
+                    string s4 = "";
+                    while (s4 != "END")
+                    {
+                        s4 = Console.ReadLine();
+                        if (s4 == "END")
+                        {
+                            break;
+                        }
+                        people2.Add(s4);
+                        Console.WriteLine("people2.Add({0})", s4);
+                        Console.WriteLine("Список people2:");
+                        foreach (string i in people2)
+                        {
+                            Console.WriteLine(i);
+                        }
+                        Console.WriteLine();
+                    }
+
+                    Console.WriteLine();
+                    Console.ReadKey();
+                }
+                if (k == 6)
+                {
+                    List<string> people6 = new List<string>();
+                    people6.Add("Egor");
+                    people6.Add("Kirill");
+                    people6.Add("Aleksandr");
+                    people6.Add("Viktor");
+                    Console.WriteLine("Обращение к элементам Списка");
+                    Console.WriteLine();
+                    Console.WriteLine("К типу List мы можем обращаться поэлемнтно, указав индекс нужного, т.е. NameList[index]");
+                    Console.WriteLine("Пусть у нас есть Список <people6> = 'Egor', 'Kirill', 'Aleksandr','Viktor'");
+                    Console.WriteLine("Чтобы вернуть первый элемент списка: people6[0] -> 'Egor' ");
+                    Console.Write("Введите index желаемого элемента (нумерация начинается с 0): ");
+                    int index=int.Parse(Console.ReadLine()); 
+                    if (index <=3)
+                    {
+                        Console.WriteLine(people6[index]);
+                    }
+                    else
+                    {
+                        Console.WriteLine("List index out of range: длина списка меньше указанного числа ");
+                    }
+                    Console.Write("index: ");
+                    index = int.Parse(Console.ReadLine());
+                    if (index <= 3)
+                    {
+                        Console.WriteLine(people6[index]);
+                    }
+                    else
+                    {
+                        Console.WriteLine("List index out of range: длина списка меньше указанного числа ");
+                    }
+                    Console.WriteLine();
+                    Console.WriteLine("Также можно удалять элементы списка разными способами");
+                    Console.WriteLine("Первый: NameList.Remove(string) удаляет первую встретившуюся строку string из списка и возвращает true если прошло успешно");
+                    Console.Write("Удалите строку 'Tom' из списка people6: ");
+                    string s7 = Console.ReadLine();
+                    while (s7!="people6.Remove('Tom')")
+                    {
+                        Console.Write("Неправильно, попробуйье еще раз: ");
+                        s7=Console.ReadLine();
+                    }
+                    people6.Remove("Tom");
+                    Console.WriteLine("people6: ");
+                    foreach (string i in people6)
+                    {
+                        Console.WriteLine(i);
+                    }
+                    Console.WriteLine();
+                    Console.WriteLine("Второй: NameList.RemoveAt(index) удаляет элемент с номером index");
+                    Console.Write("Удалите первый элемент из списка people6: ");
+                    s7 = Console.ReadLine();
+                    while (s7 != "people6.RemoveAt(0)")
+                    {
+                        Console.Write("Неправильно, попробуйье еще раз: ");
+                        s7 = Console.ReadLine();
+                    }
+                    people6.RemoveAt(0);
+                    Console.WriteLine("people6: ");
+                    foreach (string i in people6)
+                    {
+                        Console.WriteLine(i);
+                    }
+                    Console.WriteLine();
+                    List<string> people7 = new List<string>();
+                    people7.Add("Ome");
+                    people7.Add("Two");
+                    people7.Add("Three");
+                    people7.Add("Four");
+                    Console.WriteLine("Третий: NameList.RemoveRange(int start, int end) удаляет все элементы начиная с индекса start, а число end задает количество удаляемых");
+                    
+                    Console.Write("Пусть у нас есть Список people7: 'One','Two','Three','Four'");
+                    Console.Write("Удалите два последних элемента: ");
+                    s7 = Console.ReadLine();
+                    while (s7 != "people7.RemoveRange(2, 2)")
+                    {
+                        Console.Write("Неправильно, попробуйье еще раз: ");
+                        s7 = Console.ReadLine();
+                    }
+                    people7.RemoveRange(2,2);
+                    Console.WriteLine("people7: ");
+                    foreach (string i in people7)
+                    {
+                        Console.WriteLine(i);
+                    }
+                    Console.WriteLine();
+                    Console.ReadKey();
+                }
+                if (k == 7)
+                {
+                    List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
+                    Console.WriteLine("Переворот и сортировка Списка\n");
+                    Console.WriteLine("Команда NameList.Reverse() переворачивает Список");
+                    Console.Write("Переверните список numbers = {1,2,3,4,5} : ");
+                    string s8 = Console.ReadLine();
+                    while (s8 != "numbers.Reverse()")
+                    {
+                        Console.Write("Неправильно, попробуйте еще раз: ");
+                        s8 = Console.ReadLine();
+                    }
+                    numbers.Reverse();
+                    Console.Write("numbers = ");
+                    foreach (int i in numbers)
+                    {
+                        Console.Write("{0}, ",i);
+                    }
+                    Console.Write("\nКоманда NameList.Sort() сортирует Список, отсортируйте список numbers: ");
+                    s8 = Console.ReadLine();
+                    while (s8 != "numbers.Sort()")
+                    {
+                        Console.Write("Неправильно, попробуйте еще раз: ");
+                        s8 = Console.ReadLine();
+                    }
+                    numbers.Sort();
+                    Console.Write("numbers = ");
+                    foreach (int i in numbers)
+                    {
+                        Console.Write("{0}, ", i);
+                    }
+                    Console.WriteLine();
+                    Console.ReadKey();
+                }
+                if (k == 8)
+                {
+                    Console.WriteLine("Конец...");
+                    break;
+                }
+
+            }
+        }
+    }
+}
