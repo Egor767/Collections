@@ -1,0 +1,62 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+class Linq
+{
+  static void Main()
+  {
+    List<int> numbers = new List<int>() {-2, -1, 0, 1, 2, 3};
+    Console.Write("Список: ");
+    Console.WriteLine();
+    foreach( int i in numbers)
+    {
+        Console.Write("{0} ", i);
+    }
+    Console.WriteLine();
+    
+    for(int k =0; k<2;k++)
+    {
+        var sort = from i in numbers
+            orderby i descending
+            select i;
+        Console.WriteLine("Минимальное значение: {0}", sort.Last());
+        Console.WriteLine("Максимальное значение: {0}", sort.First());
+        
+        var positive = from i in numbers
+            where i >= 0
+            select i;
+        Console.WriteLine("Число положительных: {0}", positive.Count());
+        
+        var even = from i in numbers
+            where i%2 == 0
+            select i;
+        Console.WriteLine("Число четных: {0}", even.Count());
+        
+        var not_zero = from i in numbers
+            where i!=0
+            select i;
+        Console.WriteLine("Число ненулевых: {0}", not_zero.Count());
+        Console.WriteLine();
+        
+        if (k ==0)
+        {
+            Console.Write("Удалим все отрицательные числа: ");
+            for (int i =0; i < numbers.Count; i++)
+            {
+                if (numbers[i] < 0)
+                {
+                    numbers.RemoveAt(i);
+                    i--;
+                }
+            }
+            foreach(int i in numbers)
+            {
+                Console.Write("{0} ", i);
+            }
+        }
+        Console.WriteLine();
+    }
+
+  }
+}

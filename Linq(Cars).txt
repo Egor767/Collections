@@ -1,0 +1,127 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+
+class Car
+{
+    public int Id{get; set;}
+    public string Mark{get; set;}
+    public string Color{get; set;}
+    public string Number{get; set;}
+    
+    public Car(int Id, string Mark, string Color, string Number)
+    {
+        this.Id = Id;
+        this.Mark = Mark;
+        this.Color = Color;
+        this.Number = Number;
+    }
+}
+
+class CarOwner
+{
+    public string Surname{get; set;}
+    public int CarId{get; set;}
+    public int Id{get; set;}
+    
+    public CarOwner(string Surname, int CarId, int Id)
+    {
+        this.Surname = Surname;
+        this.CarId = CarId;
+        this.Id = Id;
+    }
+}
+
+public class SashaLox
+{
+    public static int Menu()
+    {
+        Console.Clear();
+        Console.WriteLine("Поиск владельцев по машине [1]");
+        Console.WriteLine("Поиск машин по марке [2]");
+        Console.WriteLine("Поиск владельца по фамилии [3]");
+        int key = int.Parse(Console.ReadLine());
+        Console.Clear();
+        return key;
+    }
+        
+    public static void Main(string[] args)
+    {
+        List<Car> Cars = new List<Car>() {new Car(0, "Toyota", "Pink", "A777AA"),
+             new Car(1, "Toyota", "Gold", "A999AA")};
+             
+        List<CarOwner> CarOwners = new List<CarOwner>(){new CarOwner("Мрдак", 0, 0), 
+            new CarOwner("Мусияк",  1, 1)};
+        
+        while (true)
+        {
+            int k = Menu();
+            switch (k)
+            {
+                case 1:
+                    var user = 
+                        from i in CarOwners
+                        group i by i.CarId;
+                    
+                    foreach (var i in user)
+                    {
+                        Console.WriteLine("Владельцы машины с номером {0} :",i.Key);
+                        foreach (var j in i)
+                        {
+                            Console.WriteLine(j.Surname);
+                        }
+                        Console.WriteLine();
+                    }
+                    int p = int.Parse(Console.ReadLine());
+                    break;
+
+                case 2:
+                    int n =0;
+                    Console.Write("Введите Марку машины: ");
+                    string local_mark = Console.ReadLine();
+                    var Marks = from i in Cars
+                        where local_mark == i.Mark
+                        select i;
+                    
+                    foreach(var i in Marks)
+                    {
+                        Console.WriteLine("{0} {1} {2} ", i.Mark, i.Color, i.Number);
+                        n++;
+                    }
+                    
+                    if (n == 0)
+                    {
+                        Console.WriteLine("Машин с такой маркой нет");
+                    }
+                    p = int.Parse(Console.ReadLine());
+                    break;
+                    
+                case 3:
+                    Console.Write("Введите Фамилию: ");
+                    string local_surname = Console.ReadLine();
+                    var car = from i in CarOwners
+                        where local_surname == i.Surname 
+                        select i;
+                    foreach(var i in car)
+                    {
+                        var find = from j in Cars 
+                            where i.CarId == j.Id
+                            select j;
+                        
+                        foreach (var j in find)
+                        {
+                            Console.WriteLine("{0} владеет машиной - {1} {2} с номером {3}", local_surname, j.Mark, j.Color, j.Number);
+                        }
+                        
+                    }
+                    p = int.Parse(Console.ReadLine());
+                    break;
+                default:
+                    break;
+            
+            }
+        
+        }
+    }
+}
